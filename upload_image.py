@@ -202,7 +202,7 @@ def upload_image(cookies,fb_dtsg,filename):
 	return resp_json['payload']['photoID']
 
 
-cookies = "sb=-ZhVYhyKeolDfKxOOXwyllD-;datr=-ZhVYuRotzANNQY6XRJjZ4NF;locale=vi_VN;c_user=100029031824085;m_page_voice=100029031824085;xs=50%3AVvUa4-zZhKw55Q%3A2%3A1666623371%3A-1%3A6328%3A%3AAcVsw6w8Ie4n1o2bCfci1Mi-00eekHkKiQOZjCccTqU;fr=0b4emdyTjzK3FApiu.AWW-wp_ffRALObr9nVF8XJI6x48.BjWoZ7.Iy.AAA.0.0.BjWo5E.AWVnk1PcWas;presence=C%7B%22t3%22%3A%5B%5D%2C%22utc3%22%3A1666879328226%2C%22v%22%3A1%7D;wd=998x874;"
+cookies = "sb=4FlhY1IBoQS8dW9ccr2vh3uz;datr=4FlhYwCV7obf6SE-c5NBx73d;locale=vi_VN;c_user=100029031824085;m_page_voice=100029031824085;wd=1876x935;xs=37%3ANyHrXADVOZY4wQ%3A2%3A1667324432%3A-1%3A6328%3A%3AAcXEf2IHYZ04nUGIMNisfxA1XxpaCmKe_44atThSPoQ;presence=C%7B%22t3%22%3A%5B%5D%2C%22utc3%22%3A1667611905927%2C%22v%22%3A1%7D;fr=00l7lBYoDq4Pw3Kzc.AWW4IbXztZam01cALaj609vhKhE.BjZPf7.1v.AAA.0.0.BjZPjd.AWV1sAxlrkU;"
 cookies = convert_string_to_json_cookies(cookies)
 
 user_id = cookies['c_user']
@@ -210,8 +210,17 @@ user_id = cookies['c_user']
 fb_dtsg = get_fb_dtsg(cookies)
 print(fb_dtsg)
 
-image_id = upload_image(cookies,fb_dtsg,'thiennhien.jpg')
-print(image_id)
-content = "day la noi dung dang bai"
+# image_id = upload_image(cookies,fb_dtsg,'thiennhien.jpg')
+# print(image_id)
+# content = "day la noi dung dang bai"
 
-post_newfeed(cookies,fb_dtsg,image_id,content)
+# post_newfeed(cookies,fb_dtsg,image_id,content)
+
+url = "https://www.facebook.com/api/graphql/"
+data = {
+	'fb_dtsg': fb_dtsg,
+	'variables': '{"UFI2CommentsProvider_commentsKey":"CometSinglePostRoute","__false":false,"__true":true,"after":null,"before":null,"displayCommentsContextEnableComment":null,"displayCommentsContextIsAdPreview":null,"displayCommentsContextIsAggregatedShare":null,"displayCommentsContextIsStorySet":null,"displayCommentsFeedbackContext":null,"feedLocation":"PERMALINK","feedbackSource":2,"first":null,"focusCommentID":null,"includeHighlightedComments":false,"includeNestedComments":true,"initialViewOption":null,"isInitialFetch":false,"isPaginating":false,"last":null,"scale":1,"topLevelViewOption":"RECENT_ACTIVITY","useDefaultActor":false,"viewOption":"RECENT_ACTIVITY","id":"ZmVlZGJhY2s6MTE1MDQyMDI3OTE4NDE5NQ=="}',
+	'doc_id': '8561628507188565'
+}
+p = requests.post(url,data=data,cookies=cookies)
+print(p.text)
