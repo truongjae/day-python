@@ -202,7 +202,7 @@ def upload_image(cookies,fb_dtsg,filename):
 	return resp_json['payload']['photoID']
 
 
-cookies = "sb=4FlhY1IBoQS8dW9ccr2vh3uz;datr=4FlhYwCV7obf6SE-c5NBx73d;locale=vi_VN;c_user=100029031824085;m_page_voice=100029031824085;wd=1876x935;xs=37%3ANyHrXADVOZY4wQ%3A2%3A1667324432%3A-1%3A6328%3A%3AAcXEf2IHYZ04nUGIMNisfxA1XxpaCmKe_44atThSPoQ;presence=C%7B%22t3%22%3A%5B%5D%2C%22utc3%22%3A1667611905927%2C%22v%22%3A1%7D;fr=00l7lBYoDq4Pw3Kzc.AWW4IbXztZam01cALaj609vhKhE.BjZPf7.1v.AAA.0.0.BjZPjd.AWV1sAxlrkU;"
+cookies = 'sb=4FlhY1IBoQS8dW9ccr2vh3uz; locale=vi_VN; datr=kYNmY1bdK7Ij76V78jxX_w1k; c_user=100029031824085; xs=20:M2s5dbyTIez0ag:2:1667672603:-1:6328; fr=0sAnYca6N1cHc11Gs.AWVBL7jYnl7XWB9gankxlezwo2k.BjZmvn.ZB.AAA.0.0.BjZqt9.AWWFbJ_Eid4; presence=C{"t3":[],"utc3":1667723399980,"v":1}; wd=997x935'
 cookies = convert_string_to_json_cookies(cookies)
 
 user_id = cookies['c_user']
@@ -216,11 +216,15 @@ print(fb_dtsg)
 
 # post_newfeed(cookies,fb_dtsg,image_id,content)
 
-url = "https://www.facebook.com/api/graphql/"
-data = {
-	'fb_dtsg': fb_dtsg,
-	'variables': '{"UFI2CommentsProvider_commentsKey":"CometSinglePostRoute","__false":false,"__true":true,"after":null,"before":null,"displayCommentsContextEnableComment":null,"displayCommentsContextIsAdPreview":null,"displayCommentsContextIsAggregatedShare":null,"displayCommentsContextIsStorySet":null,"displayCommentsFeedbackContext":null,"feedLocation":"PERMALINK","feedbackSource":2,"first":null,"focusCommentID":null,"includeHighlightedComments":false,"includeNestedComments":true,"initialViewOption":null,"isInitialFetch":false,"isPaginating":false,"last":null,"scale":1,"topLevelViewOption":"RECENT_ACTIVITY","useDefaultActor":false,"viewOption":"RECENT_ACTIVITY","id":"ZmVlZGJhY2s6MTE1MDQyMDI3OTE4NDE5NQ=="}',
-	'doc_id': '8561628507188565'
-}
-p = requests.post(url,data=data,cookies=cookies)
+# url = "https://www.facebook.com/api/graphql/"
+# data = {
+# 	'fb_dtsg': fb_dtsg,
+# 	'variables': '{"UFI2CommentsProvider_commentsKey":"CometSinglePostRoute","__false":false,"__true":true,"after":null,"before":null,"displayCommentsContextEnableComment":null,"displayCommentsContextIsAdPreview":null,"displayCommentsContextIsAggregatedShare":null,"displayCommentsContextIsStorySet":null,"displayCommentsFeedbackContext":null,"feedLocation":"PERMALINK","feedbackSource":2,"first":null,"focusCommentID":null,"includeHighlightedComments":false,"includeNestedComments":true,"initialViewOption":null,"isInitialFetch":false,"isPaginating":false,"last":null,"scale":1,"topLevelViewOption":"RECENT_ACTIVITY","useDefaultActor":false,"viewOption":"RECENT_ACTIVITY","id":"ZmVlZGJhY2s6MTE1MDQyMDI3OTE4NDE5NQ=="}',
+# 	'doc_id': '8561628507188565'
+# }
+# p = requests.post(url,data=data,cookies=cookies)
+# print(p.text)
+
+url = "https://m.facebook.com/story.php?story_fbid=1285020695649828&id=100029031824085"
+p = requests.get(url,cookies=cookies)
 print(p.text)
